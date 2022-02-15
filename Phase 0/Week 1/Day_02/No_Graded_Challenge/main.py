@@ -9,7 +9,7 @@
 # 1. Print all even numbers in the list before 918 with the same order as above
 # 2. Print "Done" when the list is printed
 
-numbers = [
+NUMBERS = [
     951, 402, 984, 651, 360, 69, 408, 319, 601, 485,
     980, 507, 725, 547, 544, 615, 83, 165, 141, 501,
     263, 617, 865, 575, 219, 390, 984, 592, 236, 105,
@@ -20,7 +20,7 @@ numbers = [
 ]
 BREAKER = 918
 
-for number in numbers:
+for number in NUMBERS:
     if number % 2 == 0:
         print(number)
     if number == BREAKER:

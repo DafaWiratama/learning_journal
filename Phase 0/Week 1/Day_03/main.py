@@ -73,7 +73,7 @@ def on_user_input():
 
         # perform logic checking for conversion we will not show same unit as input
         if not isinstance(source, Celsius):
-            print("Celcius : ", source.to_celsius())
+            print("Celsius : ", source.to_celsius())
         if not isinstance(source, Fahrenheit):
             print("Fahrenheit : ", source.to_fahrenheit())
         if not isinstance(source, Kelvin):
