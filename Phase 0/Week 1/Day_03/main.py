@@ -37,10 +37,11 @@ def on_sanity_check():
     assert kelvin.to_fahrenheit().value == -279.67
 
 
-# this function should ask user for input and convert it to the desired unit
+# this function should ask user for input and convert it to another unit
 def on_user_input():
-    # start with asking user for input until they choose to quit
+    # start input loop
     while True:
+        # start with asking user for input until they choose to quit
         # print prompt to input a temperature value followed by the unit
         print("Enter a temperature in given format ###.## C/F/K")
         user_input = input(">>> ")
@@ -58,15 +59,19 @@ def on_user_input():
 
             # convert user input to correct type
             #  with nested if logic
-            if user_input[1] == "C":
+            if user_input[1].lower() == "c":
                 source = Celsius(user_input[0])
-            elif user_input[1] == "F":
+            elif user_input[1].lower() == "f":
                 source = Fahrenheit(user_input[0])
-            elif user_input[1] == "K":
+            elif user_input[1].lower() == "k":
                 source = Kelvin(user_input[0])
             else:
-                return print("Invalid unit")
+                print("Invalid unit")
+                continue
         # should catch any exception from try block
+        except IndexError as _:
+            print("Invalid input")
+            continue
         except Exception as e:
             # if any error occurs, print error message and exit application
             return print(f"Some error has occurred with following stacktrace :{e}")

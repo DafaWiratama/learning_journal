@@ -8,37 +8,37 @@ from .Temperature import Temperature
 # should be able to convert from celsius, fahrenheit, kelvin
 # should be able to convert to celsius, fahrenheit, kelvin
 
-# formula for celsius to fahrenheit
+# function to calc from celsius to fahrenheit
 # (°C × 9/5) + 32 = °F
 def celsius_to_fahrenheit(value):
     return value * 1.8 + 32
 
 
-# formula for celsius to kelvin
+# function to calc from celsius to kelvin
 # (°C + 273.15) = K
 def celsius_to_kelvin(value):
     return value + 273.15
 
 
-# formula for fahrenheit to celsius
+# function to calc from fahrenheit to celsius
 # (°F − 32) × 5/9 = °C
 def fahrenheit_to_celsius(value):
     return (value - 32) * 5 / 9
 
 
-# formula for fahrenheit to kelvin
+# function to calc from fahrenheit to kelvin
 # ((°F − 32) × 5/9) + 273.15 = K
 def fahrenheit_to_kelvin(value):
     return (value - 32) * 5 / 9 + 273.15
 
 
-# formula for kelvin to celsius
+# function to calc from kelvin to celsius
 # (K − 273.15) = °C
 def kelvin_to_celsius(value):
     return value - 273.15
 
 
-# formula for kelvin to fahrenheit
+# function to calc from kelvin to fahrenheit
 # ((K − 273.15) × 9/5) + 32 = °F
 def kelvin_to_fahrenheit(value):
     return value * 9 / 5 - 459.67
