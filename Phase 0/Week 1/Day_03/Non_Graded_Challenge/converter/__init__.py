@@ -45,7 +45,6 @@ def kelvin_to_fahrenheit(value):
 
 
 # this class bellow should be implementing Base Temperature Class and should have method to convert temperature
-
 class Celsius(Temperature):
 
     def __init__(self, value):

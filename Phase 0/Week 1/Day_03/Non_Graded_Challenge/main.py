@@ -56,15 +56,17 @@ def on_user_input():
             # 1. Temperature Value
             # 2. Temperature Unit
             user_input = user_input.split(" ")
+            value = user_input[0]
+            unit = user_input[1].lower()
 
             # convert user input to correct type
             #  with nested if logic
-            if user_input[1].lower() == "c":
-                source = Celsius(user_input[0])
-            elif user_input[1].lower() == "f":
-                source = Fahrenheit(user_input[0])
-            elif user_input[1].lower() == "k":
-                source = Kelvin(user_input[0])
+            if unit == "c":
+                source = Celsius(value)
+            elif unit == "f":
+                source = Fahrenheit(value)
+            elif unit == "k":
+                source = Kelvin(value)
             else:
                 print("Invalid unit")
                 continue
