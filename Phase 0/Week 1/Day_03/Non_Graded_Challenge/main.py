@@ -60,7 +60,7 @@ def on_user_input():
             unit = user_input[1].lower()
 
             # convert user input to correct type
-            #  with nested if logic
+            # with nested if logic
             if unit == "c":
                 source = Celsius(value)
             elif unit == "f":
@@ -96,11 +96,11 @@ def on_user_input():
 # this function should run the program routine
 def on_runtime():
     # prompt user to choose to perform sanity check or not
-    if input("Sanity check? (y/n) :") == "y":
+    if input("Sanity check? (y/N) :") == "y":
         on_sanity_check()
 
     # prompt user to choose to perform user input or not
-    if input("User input? (y/n) :") == "y":
+    if input("User input? (y/N) :") == "y":
         on_user_input()
 
 

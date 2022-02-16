@@ -31,6 +31,19 @@
 # b = foo_d()
 
 # c = lambda a, b: a + b
+# import numpy as np
+#
+# tinggi = [1, 2, 3, 4, 5]
+# berat = [65.5, 65.5, 65.5, 65.5, 65.5]
+
+import numpy as np
+
+
+def test():
+    pass
+
+a = np.arange(12)
+print(a.reshape(3, 2, -1))
 
 
 
