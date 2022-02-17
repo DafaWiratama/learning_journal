@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 
-buffer = np.zeros(shape=(512, 512, 3), dtype=np.uint8)
+resolution = 512
+buffer = np.zeros(shape=(resolution, resolution, 3), dtype=np.uint8)
 
 vertex = np.array([
     [-1, -1, -1], [-1, 1, -1], [1, 1, -1], [1, -1, -1],
@@ -19,10 +20,8 @@ faces = np.array([
     [2, 3, 7], [2, 7, 6],
 ])
 
-resolution = 512
 
-
-def rotation_x(angle: float) -> np.array:
+def get_rotation_x(angle: float) -> np.array:
     return np.array([
         [1, 0, 0],
         [0, np.cos(angle), -np.sin(angle)],
@@ -30,7 +29,7 @@ def rotation_x(angle: float) -> np.array:
     ])
 
 
-def rotation_y(angle: float) -> np.array:
+def get_rotation_y(angle: float) -> np.array:
     return np.array([
         [np.cos(angle), 0, np.sin(angle)],
         [0, 1, 0],
@@ -38,7 +37,7 @@ def rotation_y(angle: float) -> np.array:
     ])
 
 
-def rotation_z(angle: float) -> np.array:
+def get_rotation_z(angle: float) -> np.array:
     return np.array([
         [np.cos(angle), -np.sin(angle), 0],
         [np.sin(angle), np.cos(angle), 0],
@@ -83,17 +82,22 @@ angle_z = 0.
 
 
 def on_draw(buffer: np.array) -> np.array:
+    rotation = get_rotation_x(angle_x) @ get_rotation_y(angle_y) @ get_rotation_z(angle_z)
+
     for face in faces:
 
         for i in range(-1, len(face) - 1):
             p1 = vertex[face[i]]
             p2 = vertex[face[i + 1]]
 
-            x1, y1, z1 = p1 @ rotation_x(angle_x) @ rotation_y(angle_y) @ rotation_z(angle_z)
-            x2, y2, z2 = p2 @ rotation_x(angle_x) @ rotation_y(angle_y) @ rotation_z(angle_z)
+            x1, y1, z1 = p1 @ rotation
+            x2, y2, z2 = p2 @ rotation
 
-            z1 = (z1 + 5) / 5
-            z2 = (z2 + 5) / 5
+            # z1 = (z1 + 5.) / 5.
+            # z2 = (z2 + 5.) / 5.
+
+            z1 = 1.
+            z2 = 1.
 
             buffer = draw_line(x1 / z1, y1 / z1, x2 / z2, y2 / z2, buffer)
 
@@ -116,4 +120,3 @@ while cv2.waitKey(frame_time) != 27:
     cv2.imshow('ViewPort', on_draw(buffer))
 
 cv2.destroyAllWindows()
-
